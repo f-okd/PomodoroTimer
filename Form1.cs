@@ -1,3 +1,5 @@
+using static System.Windows.Forms.AxHost;
+
 namespace PomodoroTimer
 {
     public partial class Form1 : Form
@@ -12,48 +14,87 @@ namespace PomodoroTimer
             btn_pause.Visible = false;
         }
 
-        static int pomodoro_length = 25 * 60;
-        int time_left_secs = pomodoro_length;
+        private enum  states
+        {
+            state_default,
+            state_focus,
+            state_break
+        }
+
+        private states _state = states.state_default;
+
+        private static int _pomodoro_length = 5;
+        private int _break_length = 5 * 60; 
+        private int _time_left_secs = _pomodoro_length;
 
         private void btn_start_Click(object sender, EventArgs e)
         {
             // Set pomodoro timer to 25 minutes; TODO: Take input from form 2
 
-            restartTimer();
+            _state = states.state_focus;
+
+            restartTimer(_state);
             btn_start.Visible = false;
             btn_pause.Visible = true;
         }
 
         private void displayTime(int seconds)
         {
-            TimeSpan time_left = TimeSpan.FromSeconds(time_left_secs);
+            TimeSpan time_left = TimeSpan.FromSeconds(_time_left_secs);
             label_timer.Text = time_left.ToString("mm\\:ss");
         }
         private void timer_focus_Tick(object sender, EventArgs e)
         {
-            if (time_left_secs > 0)
+            if (_time_left_secs > 0)
             {
-                time_left_secs -= 1;
-                displayTime(time_left_secs);
+                _time_left_secs -= 1;
+                displayTime(_time_left_secs);
             }
             else
             {
                 timer_focus.Stop();
-                restartTimer();
                 label_timer.Text = "Time Up!!"; // add alarm sounds
+
+                switch (_state)
+                {
+                    case states.state_focus:
+                        _state = states.state_break; break;
+                    case states.state_break:
+                        _state = states.state_focus; break;
+                    default:
+                        break;
+                }
+
+                restartTimer(_state);
             }
         }
 
-        private void restartTimer()
+        private void restartTimer(states state)
         {
-            time_left_secs = pomodoro_length;
-            displayTime(time_left_secs);
+            switch (state)
+            {
+                case states.state_focus:
+                    _time_left_secs = _pomodoro_length; break;
+                case states.state_break:
+                    _time_left_secs -= _break_length; break;
+                default: 
+                    break;
+            }
+
+            displayTime(_time_left_secs);
             timer_focus.Start();
         }
 
         private void btn_pause_Click(object sender, EventArgs e)
         {
             timer_focus.Stop();
+            switch (_state)
+            {
+                case states.state_focus:
+                    _state = states.state_break; break;
+                case states.state_break:
+                    _state = states.state_focus; break;
+            }
             btn_pause.Visible = false;
             btn_continue.Visible = true;
             btn_stop.Visible = true;
@@ -69,8 +110,20 @@ namespace PomodoroTimer
 
         private void btn_stop_Click(object sender, EventArgs e)
         {
-            restartTimer();
             timer_focus.Stop();
+            
+            switch (_state)
+            {
+                case states.state_focus:
+                    _state = states.state_break; break;
+                case states.state_break:
+                    _state = states.state_focus; break;
+                default:
+                    break;
+            }
+            restartTimer(_state);
+            timer_focus.Stop();
+
             btn_stop.Visible = false;
             btn_continue.Visible = false;
             btn_start.Visible = true;
