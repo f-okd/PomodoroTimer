@@ -28,12 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            components = new System.ComponentModel.Container();
+            btn_start = new Button();
+            label_timer = new Label();
+            timer_countdown = new System.Windows.Forms.Timer(components);
+            SuspendLayout();
+            // 
+            // btn_start
+            // 
+            btn_start.Location = new Point(315, 363);
+            btn_start.Name = "btn_start";
+            btn_start.Size = new Size(161, 44);
+            btn_start.TabIndex = 0;
+            btn_start.Text = "Start Timer";
+            btn_start.UseVisualStyleBackColor = true;
+            btn_start.Click += btn_start_Click;
+            // 
+            // label_timer
+            // 
+            label_timer.AutoSize = true;
+            label_timer.Location = new Point(384, 214);
+            label_timer.Name = "label_timer";
+            label_timer.Size = new Size(38, 15);
+            label_timer.TabIndex = 1;
+            label_timer.Text = "label1";
+            // 
+            // timer_countdown
+            // 
+            timer_countdown.Interval = 1000;
+            timer_countdown.Tick += timer_countdown_Tick;
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(label_timer);
+            Controls.Add(btn_start);
+            Name = "Form1";
+            Text = "Form1";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Button btn_start;
+        private Label label_timer;
+        private System.Windows.Forms.Timer timer_countdown;
     }
 }
