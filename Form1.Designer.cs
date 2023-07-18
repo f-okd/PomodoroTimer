@@ -36,6 +36,7 @@
             btn_continue = new Button();
             btn_stop = new Button();
             timer_break = new System.Windows.Forms.Timer(components);
+            label_state = new Label();
             SuspendLayout();
             // 
             // btn_start
@@ -96,11 +97,21 @@
             // 
             timer_break.Interval = 1000;
             // 
+            // label_state
+            // 
+            label_state.AutoSize = true;
+            label_state.Location = new Point(381, 40);
+            label_state.Name = "label_state";
+            label_state.Size = new Size(38, 15);
+            label_state.TabIndex = 5;
+            label_state.Text = "label1";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label_state);
             Controls.Add(btn_stop);
             Controls.Add(btn_continue);
             Controls.Add(btn_pause);
@@ -121,5 +132,6 @@
         private Button btn_continue;
         private Button btn_stop;
         private System.Windows.Forms.Timer timer_break;
+        private Label label_state;
     }
 }
