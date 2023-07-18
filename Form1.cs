@@ -9,8 +9,6 @@ namespace PomodoroTimer
         {
             InitializeComponent();
             // Set to value of pomodoro length in form 2
-            label_timer.Text = string.Empty;
-            label_state.Text = string.Empty;
             btn_continue.Visible = false;
             btn_stop.Visible = false;
             btn_pause.Visible = false;
@@ -24,12 +22,14 @@ namespace PomodoroTimer
         }
         private states _state = states.state_focus;
 
-
-        private static int _pomodoro_length = 5;
-        private int _break_length = 7;
+        // default values can be changes in settings
+        private static int _pomodoro_length = 25 * 60;
+        private int _break_length = 5 * 60;
         private int _long_break_length = 30 * 60;
         private int _time_left_secs = _pomodoro_length;
         private int _pomodoro_count = 0;
+        private int _pomodoro_cycles = 4;
+
 
         private DialogResult _result;
         private SoundPlayer _alarm = new SoundPlayer(@"..\..\..\alarm.wav");
@@ -55,13 +55,13 @@ namespace PomodoroTimer
             switch (_state)
             {
                 case states.state_focus:
-                    _pomodoro_count = (_pomodoro_count + 1) % 4;
+                    _pomodoro_count = (_pomodoro_count + 1) % _pomodoro_cycles;
                     _state = states.state_break;
-                    label_state.Text = "BREAK TIME";
+                    label_state.Text = "BREAK";
                     break;
                 case states.state_break:
                     _state = states.state_focus;
-                    label_state.Text = "FOCUS TIME";
+                    label_state.Text = "FOCUS";
                     break;
                 default:
                     break;
@@ -168,17 +168,19 @@ namespace PomodoroTimer
 
         private void btn_applysettings_Click(object sender, EventArgs e)
         {
-            int pomodoro_length, break_length, long_break_length;
+            int pomodoro_length, break_length, long_break_length, pomodoro_cycles;
 
             bool isPomodoroParsed = int.TryParse(txt_pomodoro.Text, out pomodoro_length);
             bool isBreakParsed = int.TryParse(txt_shortbreak.Text, out break_length);
-            bool isLongBreakParsed = int.TryParse(txt_longbreak.Text, out long_break_length);
+            bool isLongBreakParsed = int.TryParse(txt_pomodorocycles.Text, out pomodoro_cycles);
+            bool isPomodoroCyclesParsed = int.TryParse(txt_longbreak.Text, out long_break_length);
 
-            if (isPomodoroParsed && isBreakParsed && isLongBreakParsed)
+            if (isPomodoroParsed && isBreakParsed && isLongBreakParsed && isPomodoroCyclesParsed)
             {
                 _pomodoro_length = pomodoro_length * 60;  // Convert minutes to seconds
                 _break_length = break_length * 60;  // Convert minutes to seconds
                 _long_break_length = long_break_length * 60;  // Convert minutes to seconds
+                _pomodoro_cycles = pomodoro_cycles;
 
                 panel_settings.Visible = false;
             }
@@ -187,6 +189,5 @@ namespace PomodoroTimer
                 MessageBox.Show("Invalid input, please enter numbers only.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
     }
 }

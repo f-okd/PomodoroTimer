@@ -32,6 +32,8 @@
             timer_focus = new System.Windows.Forms.Timer(components);
             timer_break = new System.Windows.Forms.Timer(components);
             panel_settings = new Panel();
+            txt_pomodorocycles = new TextBox();
+            label_pomodorocycles = new Label();
             txt_longbreak = new TextBox();
             txt_shortbreak = new TextBox();
             txt_pomodoro = new TextBox();
@@ -60,6 +62,8 @@
             // 
             // panel_settings
             // 
+            panel_settings.Controls.Add(txt_pomodorocycles);
+            panel_settings.Controls.Add(label_pomodorocycles);
             panel_settings.Controls.Add(txt_longbreak);
             panel_settings.Controls.Add(txt_shortbreak);
             panel_settings.Controls.Add(txt_pomodoro);
@@ -73,23 +77,40 @@
             panel_settings.TabIndex = 6;
             panel_settings.Visible = false;
             // 
+            // txt_pomodorocycles
+            // 
+            txt_pomodorocycles.Location = new Point(357, 245);
+            txt_pomodorocycles.Name = "txt_pomodorocycles";
+            txt_pomodorocycles.Size = new Size(100, 23);
+            txt_pomodorocycles.TabIndex = 8;
+            // 
+            // label_pomodorocycles
+            // 
+            label_pomodorocycles.AutoSize = true;
+            label_pomodorocycles.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label_pomodorocycles.Location = new Point(31, 240);
+            label_pomodorocycles.Name = "label_pomodorocycles";
+            label_pomodorocycles.Size = new Size(291, 26);
+            label_pomodorocycles.TabIndex = 7;
+            label_pomodorocycles.Text = "Pomodoros between long breaks";
+            // 
             // txt_longbreak
             // 
-            txt_longbreak.Location = new Point(305, 183);
+            txt_longbreak.Location = new Point(357, 183);
             txt_longbreak.Name = "txt_longbreak";
             txt_longbreak.Size = new Size(100, 23);
             txt_longbreak.TabIndex = 6;
             // 
             // txt_shortbreak
             // 
-            txt_shortbreak.Location = new Point(305, 120);
+            txt_shortbreak.Location = new Point(357, 120);
             txt_shortbreak.Name = "txt_shortbreak";
             txt_shortbreak.Size = new Size(100, 23);
             txt_shortbreak.TabIndex = 5;
             // 
             // txt_pomodoro
             // 
-            txt_pomodoro.Location = new Point(305, 54);
+            txt_pomodoro.Location = new Point(357, 56);
             txt_pomodoro.Name = "txt_pomodoro";
             txt_pomodoro.Size = new Size(100, 23);
             txt_pomodoro.TabIndex = 4;
@@ -259,5 +280,7 @@
         private TextBox txt_longbreak;
         private TextBox txt_shortbreak;
         private TextBox txt_pomodoro;
+        private Label label_pomodorocycles;
+        private TextBox txt_pomodorocycles;
     }
 }
