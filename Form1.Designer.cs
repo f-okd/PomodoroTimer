@@ -29,99 +29,199 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            btn_start = new Button();
-            label_timer = new Label();
             timer_focus = new System.Windows.Forms.Timer(components);
-            btn_pause = new Button();
-            btn_continue = new Button();
-            btn_stop = new Button();
             timer_break = new System.Windows.Forms.Timer(components);
+            panel_settings = new Panel();
+            txt_longbreak = new TextBox();
+            txt_shortbreak = new TextBox();
+            txt_pomodoro = new TextBox();
+            btn_applysettings = new Button();
+            label_longbreak = new Label();
+            label_shortbreak = new Label();
+            label_pomodoro = new Label();
+            btn_settings = new Button();
             label_state = new Label();
+            btn_stop = new Button();
+            btn_continue = new Button();
+            btn_pause = new Button();
+            label_timer = new Label();
+            btn_start = new Button();
+            panel_settings.SuspendLayout();
             SuspendLayout();
-            // 
-            // btn_start
-            // 
-            btn_start.BackColor = Color.LightBlue;
-            btn_start.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btn_start.Location = new Point(320, 369);
-            btn_start.Name = "btn_start";
-            btn_start.Size = new Size(161, 44);
-            btn_start.TabIndex = 0;
-            btn_start.Text = "Start Timer";
-            btn_start.UseVisualStyleBackColor = false;
-            btn_start.Click += btn_start_Click;
-            // 
-            // label_timer
-            // 
-            label_timer.AutoSize = true;
-            label_timer.Font = new Font("Comic Sans MS", 100F, FontStyle.Regular, GraphicsUnit.Point);
-            label_timer.Location = new Point(172, 97);
-            label_timer.Name = "label_timer";
-            label_timer.Size = new Size(446, 186);
-            label_timer.TabIndex = 1;
-            label_timer.Text = "25:00";
             // 
             // timer_focus
             // 
             timer_focus.Interval = 1000;
             timer_focus.Tick += timer_focus_Tick;
             // 
-            // btn_pause
-            // 
-            btn_pause.BackColor = Color.LightYellow;
-            btn_pause.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btn_pause.Location = new Point(172, 379);
-            btn_pause.Name = "btn_pause";
-            btn_pause.Size = new Size(140, 35);
-            btn_pause.TabIndex = 2;
-            btn_pause.Text = "Pause";
-            btn_pause.UseVisualStyleBackColor = false;
-            btn_pause.Click += btn_pause_Click;
-            // 
-            // btn_continue
-            // 
-            btn_continue.BackColor = Color.LightGreen;
-            btn_continue.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btn_continue.Location = new Point(332, 310);
-            btn_continue.Name = "btn_continue";
-            btn_continue.Size = new Size(140, 35);
-            btn_continue.TabIndex = 3;
-            btn_continue.Text = "Continue";
-            btn_continue.UseVisualStyleBackColor = false;
-            btn_continue.Click += btn_continue_Click;
-            // 
-            // btn_stop
-            // 
-            btn_stop.BackColor = Color.LightCoral;
-            btn_stop.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btn_stop.Location = new Point(487, 379);
-            btn_stop.Name = "btn_stop";
-            btn_stop.Size = new Size(140, 35);
-            btn_stop.TabIndex = 4;
-            btn_stop.Text = "Stop";
-            btn_stop.UseVisualStyleBackColor = false;
-            btn_stop.Click += btn_stop_Click;
-            // 
             // timer_break
             // 
             timer_break.Interval = 1000;
+            // 
+            // panel_settings
+            // 
+            panel_settings.Controls.Add(txt_longbreak);
+            panel_settings.Controls.Add(txt_shortbreak);
+            panel_settings.Controls.Add(txt_pomodoro);
+            panel_settings.Controls.Add(btn_applysettings);
+            panel_settings.Controls.Add(label_longbreak);
+            panel_settings.Controls.Add(label_shortbreak);
+            panel_settings.Controls.Add(label_pomodoro);
+            panel_settings.Location = new Point(12, 12);
+            panel_settings.Name = "panel_settings";
+            panel_settings.Size = new Size(776, 426);
+            panel_settings.TabIndex = 6;
+            panel_settings.Visible = false;
+            // 
+            // txt_longbreak
+            // 
+            txt_longbreak.Location = new Point(305, 183);
+            txt_longbreak.Name = "txt_longbreak";
+            txt_longbreak.Size = new Size(100, 23);
+            txt_longbreak.TabIndex = 6;
+            // 
+            // txt_shortbreak
+            // 
+            txt_shortbreak.Location = new Point(305, 120);
+            txt_shortbreak.Name = "txt_shortbreak";
+            txt_shortbreak.Size = new Size(100, 23);
+            txt_shortbreak.TabIndex = 5;
+            // 
+            // txt_pomodoro
+            // 
+            txt_pomodoro.Location = new Point(305, 54);
+            txt_pomodoro.Name = "txt_pomodoro";
+            txt_pomodoro.Size = new Size(100, 23);
+            txt_pomodoro.TabIndex = 4;
+            // 
+            // btn_applysettings
+            // 
+            btn_applysettings.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_applysettings.Location = new Point(317, 342);
+            btn_applysettings.Name = "btn_applysettings";
+            btn_applysettings.Size = new Size(170, 41);
+            btn_applysettings.TabIndex = 3;
+            btn_applysettings.Text = "Apply Settings";
+            btn_applysettings.UseVisualStyleBackColor = true;
+            btn_applysettings.Click += btn_applysettings_Click;
+            // 
+            // label_longbreak
+            // 
+            label_longbreak.AutoSize = true;
+            label_longbreak.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label_longbreak.Location = new Point(31, 178);
+            label_longbreak.Name = "label_longbreak";
+            label_longbreak.Size = new Size(259, 26);
+            label_longbreak.TabIndex = 2;
+            label_longbreak.Text = "Long break length (minutes):";
+            // 
+            // label_shortbreak
+            // 
+            label_shortbreak.AutoSize = true;
+            label_shortbreak.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label_shortbreak.Location = new Point(31, 115);
+            label_shortbreak.Name = "label_shortbreak";
+            label_shortbreak.Size = new Size(269, 26);
+            label_shortbreak.TabIndex = 1;
+            label_shortbreak.Text = "Short break length (minutes):";
+            // 
+            // label_pomodoro
+            // 
+            label_pomodoro.AutoSize = true;
+            label_pomodoro.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label_pomodoro.Location = new Point(31, 51);
+            label_pomodoro.Name = "label_pomodoro";
+            label_pomodoro.Size = new Size(253, 26);
+            label_pomodoro.TabIndex = 0;
+            label_pomodoro.Text = "Pomodoro Length (minutes):";
+            // 
+            // btn_settings
+            // 
+            btn_settings.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_settings.Location = new Point(652, 41);
+            btn_settings.Name = "btn_settings";
+            btn_settings.Size = new Size(102, 36);
+            btn_settings.TabIndex = 19;
+            btn_settings.Text = "Settings";
+            btn_settings.UseVisualStyleBackColor = true;
+            btn_settings.Click += btn_settings_Click;
             // 
             // label_state
             // 
             label_state.AutoSize = true;
             label_state.Font = new Font("Comic Sans MS", 24.75F, FontStyle.Regular, GraphicsUnit.Point);
             label_state.ImageAlign = ContentAlignment.MiddleRight;
-            label_state.Location = new Point(343, 28);
+            label_state.Location = new Point(340, 31);
             label_state.Name = "label_state";
             label_state.Size = new Size(133, 46);
-            label_state.TabIndex = 5;
+            label_state.TabIndex = 18;
             label_state.Text = "FOCUS";
+            // 
+            // btn_stop
+            // 
+            btn_stop.BackColor = Color.LightCoral;
+            btn_stop.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_stop.Location = new Point(484, 382);
+            btn_stop.Name = "btn_stop";
+            btn_stop.Size = new Size(140, 35);
+            btn_stop.TabIndex = 17;
+            btn_stop.Text = "Stop";
+            btn_stop.UseVisualStyleBackColor = false;
+            btn_stop.Click += btn_stop_Click;
+            // 
+            // btn_continue
+            // 
+            btn_continue.BackColor = Color.LightGreen;
+            btn_continue.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_continue.Location = new Point(329, 313);
+            btn_continue.Name = "btn_continue";
+            btn_continue.Size = new Size(140, 35);
+            btn_continue.TabIndex = 16;
+            btn_continue.Text = "Continue";
+            btn_continue.UseVisualStyleBackColor = false;
+            btn_continue.Click += btn_continue_Click;
+            // 
+            // btn_pause
+            // 
+            btn_pause.BackColor = Color.LightYellow;
+            btn_pause.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_pause.Location = new Point(169, 382);
+            btn_pause.Name = "btn_pause";
+            btn_pause.Size = new Size(140, 35);
+            btn_pause.TabIndex = 15;
+            btn_pause.Text = "Pause";
+            btn_pause.UseVisualStyleBackColor = false;
+            btn_pause.Click += btn_pause_Click;
+            // 
+            // label_timer
+            // 
+            label_timer.AutoSize = true;
+            label_timer.Font = new Font("Comic Sans MS", 100F, FontStyle.Regular, GraphicsUnit.Point);
+            label_timer.Location = new Point(169, 100);
+            label_timer.Name = "label_timer";
+            label_timer.Size = new Size(446, 186);
+            label_timer.TabIndex = 14;
+            label_timer.Text = "25:00";
+            // 
+            // btn_start
+            // 
+            btn_start.BackColor = Color.LightBlue;
+            btn_start.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_start.Location = new Point(317, 372);
+            btn_start.Name = "btn_start";
+            btn_start.Size = new Size(161, 44);
+            btn_start.TabIndex = 13;
+            btn_start.Text = "Start Timer";
+            btn_start.UseVisualStyleBackColor = false;
+            btn_start.Click += btn_start_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(panel_settings);
+            Controls.Add(btn_settings);
             Controls.Add(label_state);
             Controls.Add(btn_stop);
             Controls.Add(btn_continue);
@@ -130,20 +230,34 @@
             Controls.Add(btn_start);
             Name = "Form1";
             Text = "Pomodoro Timer";
+            panel_settings.ResumeLayout(false);
+            panel_settings.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
+        private EventHandler btn_pause_Click()
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
-
-        private Button btn_start;
-        private Label label_timer;
         private System.Windows.Forms.Timer timer_focus;
-        private Button btn_pause;
-        private Button btn_continue;
-        private Button btn_stop;
         private System.Windows.Forms.Timer timer_break;
+        private Panel panel_settings;
+        private Button btn_settings;
         private Label label_state;
-
+        private Button btn_stop;
+        private Button btn_continue;
+        private Button btn_pause;
+        private Label label_timer;
+        private Button btn_start;
+        private Button btn_applysettings;
+        private Label label_longbreak;
+        private Label label_shortbreak;
+        private Label label_pomodoro;
+        private TextBox txt_longbreak;
+        private TextBox txt_shortbreak;
+        private TextBox txt_pomodoro;
     }
 }

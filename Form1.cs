@@ -160,5 +160,33 @@ namespace PomodoroTimer
             btn_continue.Visible = false;
             btn_start.Visible = true;
         }
+
+        private void btn_settings_Click(object sender, EventArgs e)
+        {
+            panel_settings.Visible = true;
+        }
+
+        private void btn_applysettings_Click(object sender, EventArgs e)
+        {
+            int pomodoro_length, break_length, long_break_length;
+
+            bool isPomodoroParsed = int.TryParse(txt_pomodoro.Text, out pomodoro_length);
+            bool isBreakParsed = int.TryParse(txt_shortbreak.Text, out break_length);
+            bool isLongBreakParsed = int.TryParse(txt_longbreak.Text, out long_break_length);
+
+            if (isPomodoroParsed && isBreakParsed && isLongBreakParsed)
+            {
+                _pomodoro_length = pomodoro_length * 60;  // Convert minutes to seconds
+                _break_length = break_length * 60;  // Convert minutes to seconds
+                _long_break_length = long_break_length * 60;  // Convert minutes to seconds
+
+                panel_settings.Visible = false;
+            }
+            else
+            {
+                MessageBox.Show("Invalid input, please enter numbers only.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }
