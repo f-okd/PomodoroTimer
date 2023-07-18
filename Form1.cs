@@ -61,7 +61,7 @@ namespace PomodoroTimer
                     break;
                 case states.state_break:
                     _state = states.state_focus;
-                    label_state.Text = "FOCUS TIME"; 
+                    label_state.Text = "FOCUS TIME";
                     break;
                 default:
                     break;

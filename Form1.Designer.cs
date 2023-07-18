@@ -41,22 +41,25 @@
             // 
             // btn_start
             // 
-            btn_start.Location = new Point(315, 363);
+            btn_start.BackColor = Color.LightBlue;
+            btn_start.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_start.Location = new Point(320, 369);
             btn_start.Name = "btn_start";
             btn_start.Size = new Size(161, 44);
             btn_start.TabIndex = 0;
             btn_start.Text = "Start Timer";
-            btn_start.UseVisualStyleBackColor = true;
+            btn_start.UseVisualStyleBackColor = false;
             btn_start.Click += btn_start_Click;
             // 
             // label_timer
             // 
             label_timer.AutoSize = true;
-            label_timer.Location = new Point(384, 214);
+            label_timer.Font = new Font("Comic Sans MS", 100F, FontStyle.Regular, GraphicsUnit.Point);
+            label_timer.Location = new Point(172, 97);
             label_timer.Name = "label_timer";
-            label_timer.Size = new Size(38, 15);
+            label_timer.Size = new Size(446, 186);
             label_timer.TabIndex = 1;
-            label_timer.Text = "label1";
+            label_timer.Text = "25:00";
             // 
             // timer_focus
             // 
@@ -65,32 +68,38 @@
             // 
             // btn_pause
             // 
-            btn_pause.Location = new Point(315, 312);
+            btn_pause.BackColor = Color.LightYellow;
+            btn_pause.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_pause.Location = new Point(172, 379);
             btn_pause.Name = "btn_pause";
-            btn_pause.Size = new Size(161, 45);
+            btn_pause.Size = new Size(140, 35);
             btn_pause.TabIndex = 2;
             btn_pause.Text = "Pause";
-            btn_pause.UseVisualStyleBackColor = true;
+            btn_pause.UseVisualStyleBackColor = false;
             btn_pause.Click += btn_pause_Click;
             // 
             // btn_continue
             // 
-            btn_continue.Location = new Point(213, 248);
+            btn_continue.BackColor = Color.LightGreen;
+            btn_continue.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_continue.Location = new Point(332, 310);
             btn_continue.Name = "btn_continue";
-            btn_continue.Size = new Size(161, 45);
+            btn_continue.Size = new Size(140, 35);
             btn_continue.TabIndex = 3;
             btn_continue.Text = "Continue";
-            btn_continue.UseVisualStyleBackColor = true;
+            btn_continue.UseVisualStyleBackColor = false;
             btn_continue.Click += btn_continue_Click;
             // 
             // btn_stop
             // 
-            btn_stop.Location = new Point(413, 248);
+            btn_stop.BackColor = Color.LightCoral;
+            btn_stop.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_stop.Location = new Point(487, 379);
             btn_stop.Name = "btn_stop";
-            btn_stop.Size = new Size(161, 45);
+            btn_stop.Size = new Size(140, 35);
             btn_stop.TabIndex = 4;
             btn_stop.Text = "Stop";
-            btn_stop.UseVisualStyleBackColor = true;
+            btn_stop.UseVisualStyleBackColor = false;
             btn_stop.Click += btn_stop_Click;
             // 
             // timer_break
@@ -100,11 +109,13 @@
             // label_state
             // 
             label_state.AutoSize = true;
-            label_state.Location = new Point(381, 40);
+            label_state.Font = new Font("Comic Sans MS", 24.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label_state.ImageAlign = ContentAlignment.MiddleRight;
+            label_state.Location = new Point(343, 28);
             label_state.Name = "label_state";
-            label_state.Size = new Size(38, 15);
+            label_state.Size = new Size(133, 46);
             label_state.TabIndex = 5;
-            label_state.Text = "label1";
+            label_state.Text = "FOCUS";
             // 
             // Form1
             // 
@@ -118,7 +129,7 @@
             Controls.Add(label_timer);
             Controls.Add(btn_start);
             Name = "Form1";
-            Text = "Form1";
+            Text = "Pomodoro Timer";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -133,5 +144,6 @@
         private Button btn_stop;
         private System.Windows.Forms.Timer timer_break;
         private Label label_state;
+
     }
 }
