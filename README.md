@@ -13,3 +13,7 @@ It's pretty simple not sure I needed this in the first place but hey ho.:
 I quickly drew this up on [creately](https://app.creately.com) because I was getting confused about behaviour.
 
 ![UML_State_Diagram](https://github.com/f-okd/PomodoroTimer/assets/105448066/1504568a-50f2-4ba8-bb96-936c0f052e73)
+
+# Project demo
+
+![PomodoroTimer](https://github.com/f-okd/PomodoroTimer/assets/105448066/aca956dc-ed4f-4140-a0fe-cabb4e9e53a9)
