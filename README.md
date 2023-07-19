@@ -16,4 +16,4 @@ I quickly drew this up on [creately](https://app.creately.com) because I was get
 
 # Project demo
 
-![PomodoroTimer](https://github.com/f-okd/PomodoroTimer/assets/105448066/aca956dc-ed4f-4140-a0fe-cabb4e9e53a9)
+![pomodoro](https://github.com/f-okd/PomodoroTimer/assets/105448066/f40b604e-96f0-4f0d-a2fe-656f508f479d)
