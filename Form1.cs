@@ -77,15 +77,14 @@ namespace PomodoroTimer
             else
             {
                 timer_focus.Stop();
-                label_timer.Text = "Time Up!!"; // add alarm sounds
+                label_timer.Text = "Time Up!!";
+                _alarm.Play();
 
                 switch (_state)
                 {
                     case states.state_focus:
-                        _alarm.Play();
                         _result = MessageBox.Show("Timer is finished! Click OK to start the break timer.", "Timer Finished", MessageBoxButtons.OK); break;
                     case states.state_break:
-                        _alarm.Play();
                         _result = MessageBox.Show("Break is finished! Click OK to start the focus timer.", "Timer Finished", MessageBoxButtons.OK); break;
                     default:
                         _result = DialogResult.OK; break;
