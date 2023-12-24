@@ -3,8 +3,6 @@ This is a simple C# Windows Forms Application that serves as a [Pomodoro Timer](
 
 # Initial Design
 
-It's pretty simple not sure I needed this in the first place but hey ho.:
-
 ![Design version1](https://github.com/f-okd/PomodoroTimer/assets/105448066/058b65ea-ab96-4286-abe8-de92dcc923cc)
 
 
