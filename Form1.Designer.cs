@@ -54,7 +54,7 @@
             // timer_focus
             // 
             timer_focus.Interval = 1000;
-            timer_focus.Tick += timer_focus_Tick;
+            timer_focus.Tick += Timer_focus_Tick;
             // 
             // timer_break
             // 
@@ -138,7 +138,7 @@
             btn_applysettings.TabIndex = 3;
             btn_applysettings.Text = "Apply Settings";
             btn_applysettings.UseVisualStyleBackColor = true;
-            btn_applysettings.Click += btn_applysettings_Click;
+            btn_applysettings.Click += Btn_applysettings_Click;
             // 
             // label_longbreak
             // 
@@ -180,7 +180,7 @@
             btn_settings.TabIndex = 19;
             btn_settings.Text = "Settings";
             btn_settings.UseVisualStyleBackColor = true;
-            btn_settings.Click += btn_settings_Click;
+            btn_settings.Click += Btn_settings_Click;
             // 
             // label_state
             // 
@@ -204,7 +204,7 @@
             btn_stop.TabIndex = 17;
             btn_stop.Text = "Stop";
             btn_stop.UseVisualStyleBackColor = false;
-            btn_stop.Click += btn_stop_Click;
+            btn_stop.Click += Btn_stop_Click;
             // 
             // btn_continue
             // 
@@ -217,7 +217,7 @@
             btn_continue.TabIndex = 16;
             btn_continue.Text = "Continue";
             btn_continue.UseVisualStyleBackColor = false;
-            btn_continue.Click += btn_continue_Click;
+            btn_continue.Click += Btn_continue_Click;
             // 
             // btn_pause
             // 
@@ -230,7 +230,7 @@
             btn_pause.TabIndex = 15;
             btn_pause.Text = "Pause";
             btn_pause.UseVisualStyleBackColor = false;
-            btn_pause.Click += btn_pause_Click;
+            btn_pause.Click += Btn_pause_Click;
             // 
             // label_timer
             // 
@@ -253,7 +253,7 @@
             btn_start.TabIndex = 13;
             btn_start.Text = "Start Timer";
             btn_start.UseVisualStyleBackColor = false;
-            btn_start.Click += btn_start_Click;
+            btn_start.Click += Btn_start_Click;
             // 
             // Form1
             // 

@@ -1,5 +1,4 @@
 using System.Media;
-using static System.Windows.Forms.AxHost;
 
 namespace PomodoroTimer
 {
@@ -14,13 +13,13 @@ namespace PomodoroTimer
             btn_pause.Visible = false;
         }
 
-        private enum states
+        private enum States
         {
             state_default,
             state_focus,
             state_break
         }
-        private states _state = states.state_focus;
+        private States _state = States.state_focus;
 
         // default values can be changes in settings
         private static int _pomodoro_length = 25 * 60;
@@ -32,47 +31,47 @@ namespace PomodoroTimer
 
 
         private DialogResult _result;
-        private SoundPlayer _alarm = new SoundPlayer(@"..\..\..\alarm.wav");
+        private readonly SoundPlayer _alarm = new(@"..\..\..\alarm.wav");
 
 
-        private void btn_start_Click(object sender, EventArgs e)
+        private void Btn_start_Click(object sender, EventArgs e)
         {
             // Set pomodoro timer to 25 minutes; TODO: Take input from form 2
 
-            restartTimer(_state);
+            RestartTimer(_state);
             btn_start.Visible = false;
             btn_pause.Visible = true;
         }
 
-        private void displayTime(int seconds)
+        private void DisplayTime(int seconds)
         {
             TimeSpan time_left = TimeSpan.FromSeconds(_time_left_secs);
             label_timer.Text = time_left.ToString("mm\\:ss");
         }
 
-        private void switchStates()
+        private void SwitchStates()
         {
             switch (_state)
             {
-                case states.state_focus:
+                case States.state_focus:
                     _pomodoro_count = (_pomodoro_count + 1) % _pomodoro_cycles;
-                    _state = states.state_break;
+                    _state = States.state_break;
                     label_state.Text = "BREAK";
                     break;
-                case states.state_break:
-                    _state = states.state_focus;
+                case States.state_break:
+                    _state = States.state_focus;
                     label_state.Text = "FOCUS";
                     break;
                 default:
                     break;
             }
         }
-        private void timer_focus_Tick(object sender, EventArgs e)
+        private void Timer_focus_Tick(object sender, EventArgs e)
         {
             if (_time_left_secs > 0)
             {
                 _time_left_secs -= 1;
-                displayTime(_time_left_secs);
+                DisplayTime(_time_left_secs);
             }
             else
             {
@@ -82,37 +81,37 @@ namespace PomodoroTimer
 
                 switch (_state)
                 {
-                    case states.state_focus:
+                    case States.state_focus:
                         _result = MessageBox.Show("Timer is finished! Click OK to start the break timer.", "Timer Finished", MessageBoxButtons.OK); break;
-                    case states.state_break:
+                    case States.state_break:
                         _result = MessageBox.Show("Break is finished! Click OK to start the focus timer.", "Timer Finished", MessageBoxButtons.OK); break;
                     default:
                         _result = DialogResult.OK; break;
                 }
 
-                switchStates();
+                SwitchStates();
 
 
                 if (_result == DialogResult.OK)
                 {
-                    restartTimer(_state);
+                    RestartTimer(_state);
                     _alarm.Stop();
                 }
                 else
                 {
-                    restartTimer(_state);
+                    RestartTimer(_state);
                     _alarm.Stop();
                 }
             }
         }
 
-        private void restartTimer(states state)
+        private void RestartTimer(States state)
         {
             switch (state)
             {
-                case states.state_focus:
+                case States.state_focus:
                     _time_left_secs = _pomodoro_length; break;
-                case states.state_break: // Every 3 pomodoros, long break
+                case States.state_break: // Every 3 pomodoros, long break
                     if (_pomodoro_count == 3)
                     {
                         _time_left_secs = _long_break_length; break;
@@ -125,11 +124,11 @@ namespace PomodoroTimer
                     break;
             }
 
-            displayTime(_time_left_secs);
+            DisplayTime(_time_left_secs);
             timer_focus.Start();
         }
 
-        private void btn_pause_Click(object sender, EventArgs e)
+        private void Btn_pause_Click(object sender, EventArgs e)
         {
             timer_focus.Stop();
 
@@ -138,7 +137,7 @@ namespace PomodoroTimer
             btn_stop.Visible = true;
         }
 
-        private void btn_continue_Click(object sender, EventArgs e)
+        private void Btn_continue_Click(object sender, EventArgs e)
         {
             timer_focus.Start();
             btn_continue.Visible = false;
@@ -146,13 +145,13 @@ namespace PomodoroTimer
             btn_pause.Visible = true;
         }
 
-        private void btn_stop_Click(object sender, EventArgs e)
+        private void Btn_stop_Click(object sender, EventArgs e)
         {
             timer_focus.Stop();
 
-            switchStates();
+            SwitchStates();
 
-            restartTimer(_state);
+            RestartTimer(_state);
             timer_focus.Stop();
 
             btn_stop.Visible = false;
@@ -160,19 +159,17 @@ namespace PomodoroTimer
             btn_start.Visible = true;
         }
 
-        private void btn_settings_Click(object sender, EventArgs e)
+        private void Btn_settings_Click(object sender, EventArgs e)
         {
             panel_settings.Visible = true;
         }
 
-        private void btn_applysettings_Click(object sender, EventArgs e)
+        private void Btn_applysettings_Click(object sender, EventArgs e)
         {
-            int pomodoro_length, break_length, long_break_length, pomodoro_cycles;
-
-            bool isPomodoroParsed = int.TryParse(txt_pomodoro.Text, out pomodoro_length);
-            bool isBreakParsed = int.TryParse(txt_shortbreak.Text, out break_length);
-            bool isLongBreakParsed = int.TryParse(txt_pomodorocycles.Text, out pomodoro_cycles);
-            bool isPomodoroCyclesParsed = int.TryParse(txt_longbreak.Text, out long_break_length);
+            bool isPomodoroParsed = int.TryParse(txt_pomodoro.Text, out int pomodoro_length);
+            bool isBreakParsed = int.TryParse(txt_shortbreak.Text, out int break_length);
+            bool isLongBreakParsed = int.TryParse(txt_pomodorocycles.Text, out int pomodoro_cycles);
+            bool isPomodoroCyclesParsed = int.TryParse(txt_longbreak.Text, out int long_break_length);
 
             if (isPomodoroParsed && isBreakParsed && isLongBreakParsed && isPomodoroCyclesParsed)
             {
