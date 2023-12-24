@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             timer_focus = new System.Windows.Forms.Timer(components);
             timer_break = new System.Windows.Forms.Timer(components);
             panel_settings = new Panel();
@@ -71,7 +72,8 @@
             panel_settings.Controls.Add(label_longbreak);
             panel_settings.Controls.Add(label_shortbreak);
             panel_settings.Controls.Add(label_pomodoro);
-            panel_settings.Location = new Point(14, 16);
+            panel_settings.ForeColor = Color.Salmon;
+            panel_settings.Location = new Point(15, 19);
             panel_settings.Margin = new Padding(3, 4, 3, 4);
             panel_settings.Name = "panel_settings";
             panel_settings.Size = new Size(887, 568);
@@ -80,8 +82,10 @@
             // 
             // txt_pomodorocycles
             // 
-            txt_pomodorocycles.Font = new Font("Comic Sans MS", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            txt_pomodorocycles.Location = new Point(408, 327);
+            txt_pomodorocycles.BackColor = Color.PeachPuff;
+            txt_pomodorocycles.Font = new Font("Corbel", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            txt_pomodorocycles.ForeColor = Color.SaddleBrown;
+            txt_pomodorocycles.Location = new Point(442, 320);
             txt_pomodorocycles.Margin = new Padding(3, 4, 3, 4);
             txt_pomodorocycles.Name = "txt_pomodorocycles";
             txt_pomodorocycles.Size = new Size(114, 40);
@@ -91,17 +95,19 @@
             // label_pomodorocycles
             // 
             label_pomodorocycles.AutoSize = true;
-            label_pomodorocycles.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label_pomodorocycles.Location = new Point(35, 320);
+            label_pomodorocycles.Font = new Font("Corbel", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            label_pomodorocycles.Location = new Point(25, 320);
             label_pomodorocycles.Name = "label_pomodorocycles";
-            label_pomodorocycles.Size = new Size(371, 33);
+            label_pomodorocycles.Size = new Size(404, 35);
             label_pomodorocycles.TabIndex = 7;
-            label_pomodorocycles.Text = "Pomodoros between long breaks";
+            label_pomodorocycles.Text = "Pomodoros between long breaks:";
             // 
             // txt_longbreak
             // 
-            txt_longbreak.Font = new Font("Comic Sans MS", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            txt_longbreak.Location = new Point(408, 244);
+            txt_longbreak.BackColor = Color.PeachPuff;
+            txt_longbreak.Font = new Font("Corbel", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            txt_longbreak.ForeColor = Color.SaddleBrown;
+            txt_longbreak.Location = new Point(442, 237);
             txt_longbreak.Margin = new Padding(3, 4, 3, 4);
             txt_longbreak.Name = "txt_longbreak";
             txt_longbreak.Size = new Size(114, 40);
@@ -110,8 +116,10 @@
             // 
             // txt_shortbreak
             // 
-            txt_shortbreak.Font = new Font("Comic Sans MS", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            txt_shortbreak.Location = new Point(408, 160);
+            txt_shortbreak.BackColor = Color.PeachPuff;
+            txt_shortbreak.Font = new Font("Corbel", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            txt_shortbreak.ForeColor = Color.SaddleBrown;
+            txt_shortbreak.Location = new Point(442, 153);
             txt_shortbreak.Margin = new Padding(3, 4, 3, 4);
             txt_shortbreak.Name = "txt_shortbreak";
             txt_shortbreak.Size = new Size(114, 40);
@@ -120,8 +128,10 @@
             // 
             // txt_pomodoro
             // 
-            txt_pomodoro.Font = new Font("Comic Sans MS", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            txt_pomodoro.Location = new Point(408, 75);
+            txt_pomodoro.BackColor = Color.PeachPuff;
+            txt_pomodoro.Font = new Font("Corbel", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            txt_pomodoro.ForeColor = Color.SaddleBrown;
+            txt_pomodoro.Location = new Point(442, 68);
             txt_pomodoro.Margin = new Padding(3, 4, 3, 4);
             txt_pomodoro.Name = "txt_pomodoro";
             txt_pomodoro.Size = new Size(114, 40);
@@ -130,73 +140,81 @@
             // 
             // btn_applysettings
             // 
-            btn_applysettings.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_applysettings.BackColor = Color.BurlyWood;
+            btn_applysettings.Font = new Font("Corbel", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_applysettings.ForeColor = Color.SaddleBrown;
             btn_applysettings.Location = new Point(362, 456);
             btn_applysettings.Margin = new Padding(3, 4, 3, 4);
             btn_applysettings.Name = "btn_applysettings";
-            btn_applysettings.Size = new Size(194, 55);
+            btn_applysettings.Size = new Size(234, 55);
             btn_applysettings.TabIndex = 3;
             btn_applysettings.Text = "Apply Settings";
-            btn_applysettings.UseVisualStyleBackColor = true;
+            btn_applysettings.UseVisualStyleBackColor = false;
             btn_applysettings.Click += Btn_applysettings_Click;
             // 
             // label_longbreak
             // 
             label_longbreak.AutoSize = true;
-            label_longbreak.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label_longbreak.Location = new Point(35, 237);
+            label_longbreak.Font = new Font("Corbel", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            label_longbreak.Location = new Point(25, 237);
             label_longbreak.Name = "label_longbreak";
-            label_longbreak.Size = new Size(332, 33);
+            label_longbreak.Size = new Size(353, 35);
             label_longbreak.TabIndex = 2;
             label_longbreak.Text = "Long break length (minutes):";
             // 
             // label_shortbreak
             // 
             label_shortbreak.AutoSize = true;
-            label_shortbreak.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label_shortbreak.Location = new Point(35, 153);
+            label_shortbreak.Font = new Font("Corbel", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            label_shortbreak.ForeColor = Color.Salmon;
+            label_shortbreak.Location = new Point(25, 153);
             label_shortbreak.Name = "label_shortbreak";
-            label_shortbreak.Size = new Size(345, 33);
+            label_shortbreak.Size = new Size(357, 35);
             label_shortbreak.TabIndex = 1;
             label_shortbreak.Text = "Short break length (minutes):";
             // 
             // label_pomodoro
             // 
             label_pomodoro.AutoSize = true;
-            label_pomodoro.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label_pomodoro.Location = new Point(35, 68);
+            label_pomodoro.Font = new Font("Corbel", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            label_pomodoro.ForeColor = Color.Salmon;
+            label_pomodoro.Location = new Point(25, 68);
             label_pomodoro.Name = "label_pomodoro";
-            label_pomodoro.Size = new Size(323, 33);
+            label_pomodoro.Size = new Size(351, 35);
             label_pomodoro.TabIndex = 0;
             label_pomodoro.Text = "Pomodoro Length (minutes):";
             // 
             // btn_settings
             // 
-            btn_settings.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btn_settings.Location = new Point(745, 55);
+            btn_settings.BackColor = Color.PeachPuff;
+            btn_settings.Font = new Font("Corbel", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_settings.ForeColor = Color.SaddleBrown;
+            btn_settings.Location = new Point(751, 41);
             btn_settings.Margin = new Padding(3, 4, 3, 4);
             btn_settings.Name = "btn_settings";
-            btn_settings.Size = new Size(117, 48);
+            btn_settings.Size = new Size(129, 48);
             btn_settings.TabIndex = 19;
             btn_settings.Text = "Settings";
-            btn_settings.UseVisualStyleBackColor = true;
+            btn_settings.UseVisualStyleBackColor = false;
             btn_settings.Click += Btn_settings_Click;
             // 
             // label_state
             // 
             label_state.AutoSize = true;
-            label_state.Font = new Font("Comic Sans MS", 24.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label_state.Font = new Font("Corbel", 25.2F, FontStyle.Regular, GraphicsUnit.Point);
+            label_state.ForeColor = Color.Salmon;
             label_state.ImageAlign = ContentAlignment.MiddleRight;
             label_state.Location = new Point(389, 41);
             label_state.Name = "label_state";
-            label_state.Size = new Size(169, 59);
+            label_state.Size = new Size(150, 51);
             label_state.TabIndex = 18;
             label_state.Text = "FOCUS";
             // 
             // btn_stop
             // 
             btn_stop.BackColor = Color.LightCoral;
-            btn_stop.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_stop.Font = new Font("Corbel", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_stop.ForeColor = Color.SaddleBrown;
             btn_stop.Location = new Point(553, 509);
             btn_stop.Margin = new Padding(3, 4, 3, 4);
             btn_stop.Name = "btn_stop";
@@ -209,7 +227,8 @@
             // btn_continue
             // 
             btn_continue.BackColor = Color.LightGreen;
-            btn_continue.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_continue.Font = new Font("Corbel", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_continue.ForeColor = Color.SaddleBrown;
             btn_continue.Location = new Point(376, 417);
             btn_continue.Margin = new Padding(3, 4, 3, 4);
             btn_continue.Name = "btn_continue";
@@ -222,7 +241,8 @@
             // btn_pause
             // 
             btn_pause.BackColor = Color.LightYellow;
-            btn_pause.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_pause.Font = new Font("Corbel", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_pause.ForeColor = Color.SaddleBrown;
             btn_pause.Location = new Point(193, 509);
             btn_pause.Margin = new Padding(3, 4, 3, 4);
             btn_pause.Name = "btn_pause";
@@ -235,17 +255,19 @@
             // label_timer
             // 
             label_timer.AutoSize = true;
-            label_timer.Font = new Font("Comic Sans MS", 100F, FontStyle.Regular, GraphicsUnit.Point);
+            label_timer.Font = new Font("Corbel", 100.200005F, FontStyle.Regular, GraphicsUnit.Point);
+            label_timer.ForeColor = Color.Salmon;
             label_timer.Location = new Point(193, 133);
             label_timer.Name = "label_timer";
-            label_timer.Size = new Size(555, 232);
+            label_timer.Size = new Size(563, 205);
             label_timer.TabIndex = 14;
-            label_timer.Text = "25:00";
+            label_timer.Text = "START";
             // 
             // btn_start
             // 
             btn_start.BackColor = Color.LightBlue;
-            btn_start.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_start.Font = new Font("Corbel", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_start.ForeColor = Color.SaddleBrown;
             btn_start.Location = new Point(362, 496);
             btn_start.Margin = new Padding(3, 4, 3, 4);
             btn_start.Name = "btn_start";
@@ -259,6 +281,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.BlanchedAlmond;
             ClientSize = new Size(914, 600);
             Controls.Add(panel_settings);
             Controls.Add(btn_settings);
@@ -268,6 +291,7 @@
             Controls.Add(btn_pause);
             Controls.Add(label_timer);
             Controls.Add(btn_start);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
             Text = "Pomodoro Timer";
