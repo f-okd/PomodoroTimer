@@ -61,7 +61,6 @@ namespace PomodoroTimer
                 { "LongBreakLength", this._longBreakLength },
                 { "PomodoroCycles", this._pomodoroCycles }
             };
-            MessageBox.Show(settings["PomodoroLength"].ToString());
             return settings;
         }
 
