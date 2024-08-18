@@ -6,7 +6,7 @@ Installer only supports 64 bit systems. Feel free to fork and ammend the "Pomodo
 ## How to run
 1. Download the latest release from the Releases page.
 2. Extract the ZIP file to your preferred location.
-3. Double-click the executable file (e.g., YourAppName.exe) to launch the application.
+3. Double-click the executable file (Pomodoro Timer.exe) to launch the application.
 
 Alternatively
 1. Clone the repository to your local machine
