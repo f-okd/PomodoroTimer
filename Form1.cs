@@ -21,13 +21,8 @@ namespace PomodoroTimer
         }
         private States _state = States.state_focus;
 
-        // default values can be changes in settings
-        private static int _pomodoro_length = 25 * 60;
-        private int _break_length = 5 * 60;
-        private int _long_break_length = 30 * 60;
-        private int _time_left_secs = _pomodoro_length;
-        private int _pomodoro_count = 0;
-        private int _pomodoro_cycles = 4;
+        private SettingsController settingsController = new SettingsController();
+        private PomodoroController pomodoroController = new PomodoroController();
 
 
         private DialogResult _result;
@@ -45,7 +40,7 @@ namespace PomodoroTimer
 
         private void DisplayTime(int seconds)
         {
-            TimeSpan time_left = TimeSpan.FromSeconds(_time_left_secs);
+            TimeSpan time_left = TimeSpan.FromSeconds(pomodoroController.TimeLeft);
             label_timer.Text = time_left.ToString("mm\\:ss");
         }
 
@@ -54,7 +49,7 @@ namespace PomodoroTimer
             switch (_state)
             {
                 case States.state_focus:
-                    _pomodoro_count = (_pomodoro_count + 1) % _pomodoro_cycles;
+                    pomodoroController.PomodoroCount += 1;
                     _state = States.state_break;
                     label_state.Text = "BREAK";
                     break;
@@ -68,10 +63,10 @@ namespace PomodoroTimer
         }
         private void Timer_focus_Tick(object sender, EventArgs e)
         {
-            if (_time_left_secs > 0)
+            if (pomodoroController.TimeLeft > 0)
             {
-                _time_left_secs -= 1;
-                DisplayTime(_time_left_secs);
+                pomodoroController.TimeLeft -= 1;
+                DisplayTime(pomodoroController.TimeLeft);
             }
             else
             {
@@ -110,21 +105,21 @@ namespace PomodoroTimer
             switch (state)
             {
                 case States.state_focus:
-                    _time_left_secs = _pomodoro_length; break;
-                case States.state_break: // Every 3 pomodoros, long break
-                    if (_pomodoro_count == 3)
+                    pomodoroController.TimeLeft = pomodoroController.PomodoroLength * 60; break;
+                case States.state_break: // 4th pomodoro break is a long break
+                    if (pomodoroController.PomodoroCount == 3)
                     {
-                        _time_left_secs = _long_break_length; break;
+                        pomodoroController.StartLongBreak(); break;
                     }
                     else
                     {
-                        _time_left_secs = _break_length; break;
+                        pomodoroController.StartShortBreak(); break;
                     }
                 default:
                     break;
             }
 
-            DisplayTime(_time_left_secs);
+            DisplayTime(pomodoroController.TimeLeft);
             timer_focus.Start();
         }
 
@@ -166,17 +161,15 @@ namespace PomodoroTimer
 
         private void Btn_applysettings_Click(object sender, EventArgs e)
         {
-            bool isPomodoroParsed = int.TryParse(txt_pomodoro.Text, out int pomodoro_length);
-            bool isBreakParsed = int.TryParse(txt_shortbreak.Text, out int break_length);
-            bool isLongBreakParsed = int.TryParse(txt_pomodorocycles.Text, out int pomodoro_cycles);
-            bool isPomodoroCyclesParsed = int.TryParse(txt_longbreak.Text, out int long_break_length);
+            bool isPomodoroParsed = int.TryParse(txt_pomodoro.Text, out int pomodoroLength);
+            bool isBreakParsed = int.TryParse(txt_shortbreak.Text, out int shortBreakLength);
+            bool isPomodoroCyclesParsed = int.TryParse(txt_longbreak.Text, out int longBreakLength);
+            bool isLongBreakParsed = int.TryParse(txt_pomodorocycles.Text, out int pomodoroCycles);
 
             if (isPomodoroParsed && isBreakParsed && isLongBreakParsed && isPomodoroCyclesParsed)
             {
-                _pomodoro_length = pomodoro_length * 60;  // Convert minutes to seconds
-                _break_length = break_length * 60;  // Convert minutes to seconds
-                _long_break_length = long_break_length * 60;  // Convert minutes to seconds
-                _pomodoro_cycles = pomodoro_cycles;
+                settingsController.UpdateSettings(pomodoroLength, shortBreakLength, longBreakLength, pomodoroCycles);
+                pomodoroController.SyncSettings();
 
                 panel_settings.Visible = false;
             }
