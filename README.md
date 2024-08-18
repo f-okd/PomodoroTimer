@@ -3,7 +3,8 @@ This is a simple C# Windows Forms Application that serves as a [Pomodoro Timer](
 
 Installer only supports 64 bit systems. Feel free to fork and ammend the "Pomodoro Timer" setup project to also include x86 and or ARM64 versions of the .NET Desktop runtimes as pre-requisites to be installed. I felt the app should be as lightweight as possible.
 
+
 # Project demo
-![pomodoro](https://github.com/user-attachments/assets/d799f1d8-8032-4c93-a0fb-3aff12419bc6)
+![pomodoro_timer_gif](https://github.com/user-attachments/assets/ada82ee6-8b01-4d02-982f-3633917715be)
 
 icon source: https://icon-icons.com/icon/tomato-food/68675
