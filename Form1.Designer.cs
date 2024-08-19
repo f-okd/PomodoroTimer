@@ -50,6 +50,7 @@
             btn_pause = new Button();
             label_timer = new Label();
             btn_start = new Button();
+            btn_reset_settings = new Button();
             panel_settings.SuspendLayout();
             SuspendLayout();
             // 
@@ -64,6 +65,7 @@
             // 
             // panel_settings
             // 
+            panel_settings.Controls.Add(btn_reset_settings);
             panel_settings.Controls.Add(btn_cancel_settings);
             panel_settings.Controls.Add(txt_pomodorocycles);
             panel_settings.Controls.Add(label_pomodorocycles);
@@ -86,7 +88,7 @@
             btn_cancel_settings.BackColor = Color.BurlyWood;
             btn_cancel_settings.Font = new Font("Corbel", 18F, FontStyle.Regular, GraphicsUnit.Point);
             btn_cancel_settings.ForeColor = Color.SaddleBrown;
-            btn_cancel_settings.Location = new Point(705, 44);
+            btn_cancel_settings.Location = new Point(714, 37);
             btn_cancel_settings.Name = "btn_cancel_settings";
             btn_cancel_settings.Size = new Size(43, 41);
             btn_cancel_settings.TabIndex = 9;
@@ -281,6 +283,19 @@
             btn_start.UseVisualStyleBackColor = false;
             btn_start.Click += Btn_start_Click;
             // 
+            // btn_reset_settings
+            // 
+            btn_reset_settings.BackColor = Color.BurlyWood;
+            btn_reset_settings.Font = new Font("Corbel", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_reset_settings.ForeColor = Color.SaddleBrown;
+            btn_reset_settings.Location = new Point(617, 37);
+            btn_reset_settings.Name = "btn_reset_settings";
+            btn_reset_settings.Size = new Size(91, 41);
+            btn_reset_settings.TabIndex = 10;
+            btn_reset_settings.Text = "Reset";
+            btn_reset_settings.UseVisualStyleBackColor = false;
+            btn_reset_settings.Click += btn_reset_settings_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -330,5 +345,6 @@
         private Label label_pomodorocycles;
         private TextBox txt_pomodorocycles;
         private Button btn_cancel_settings;
+        private Button btn_reset_settings;
     }
 }

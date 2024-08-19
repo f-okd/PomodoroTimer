@@ -26,7 +26,7 @@ namespace PomodoroTimer
 
 
         private DialogResult _result;
-        private readonly SoundPlayer _alarm = new("alarm.wav");
+        private readonly SoundPlayer _alarm = new(Path.Combine(Application.StartupPath, "datafiles/alarm.wav"));
 
 
         private void Btn_start_Click(object sender, EventArgs e)
@@ -40,8 +40,8 @@ namespace PomodoroTimer
 
         private void DisplayTime(int seconds)
         {
-            TimeSpan time_left = TimeSpan.FromSeconds(pomodoroController.TimeLeft);
-            label_timer.Text = time_left.ToString("mm\\:ss");
+            TimeSpan time_left = TimeSpan.FromSeconds(seconds);
+            label_timer.Text = seconds < 3600 ? time_left.ToString("mm\\:ss") : label_timer.Text = time_left.ToString("hh\\:mm\\:ss");
         }
 
         private void SwitchStates()
@@ -159,6 +159,12 @@ namespace PomodoroTimer
             panel_settings.Visible = true;
         }
 
+        // used to validate the n
+        private static bool ValidLengthOfTime(int length)
+        {
+            return length > 0 && length <= 60;
+        }
+
         private void Btn_applysettings_Click(object sender, EventArgs e)
         {
             bool isPomodoroParsed = int.TryParse(txt_pomodoro.Text, out int pomodoroLength);
@@ -166,16 +172,27 @@ namespace PomodoroTimer
             bool isPomodoroCyclesParsed = int.TryParse(txt_longbreak.Text, out int longBreakLength);
             bool isLongBreakParsed = int.TryParse(txt_pomodorocycles.Text, out int pomodoroCycles);
 
-            if (isPomodoroParsed && isBreakParsed && isLongBreakParsed && isPomodoroCyclesParsed)
+            bool validIntegers = isPomodoroParsed && isBreakParsed && isLongBreakParsed && isPomodoroCyclesParsed;
+            bool validSizes = ValidLengthOfTime(pomodoroLength) && ValidLengthOfTime(shortBreakLength) && ValidLengthOfTime(longBreakLength);
+
+            if (!validIntegers || !validSizes)
+            {
+                MessageBox.Show("Invalid input, please enter integers from 1 to 60 only.\nThe spirit of the pomodoro timer revolves around short focused bursts of productivity!", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (pomodoroCycles < 2 || pomodoroCycles > 5)
+            {
+                MessageBox.Show("Please choose a number between 2 and 5 for the number of pomodoro cycles \nIt makes for an optimal experience", "Invalid cycle amount", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (shortBreakLength >= longBreakLength)
+            {
+                MessageBox.Show("Short break length should be shorter than the long break length", "Invalid short break length", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
             {
                 settingsController.UpdateSettings(pomodoroLength, shortBreakLength, longBreakLength, pomodoroCycles);
                 pomodoroController.SyncSettings();
 
                 panel_settings.Visible = false;
-            }
-            else
-            {
-                MessageBox.Show("Invalid input, please enter numbers only.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -187,6 +204,23 @@ namespace PomodoroTimer
             txt_pomodorocycles.Text = pomodoroController.PomodoroCycles.ToString();
 
             panel_settings.Visible = false;
+        }
+
+        private void btn_reset_settings_Click(object sender, EventArgs e)
+        {
+            var confirmResult = MessageBox.Show("Are you sure you want to reset your settings ??", "Reeset to default settings!!", MessageBoxButtons.YesNo);
+
+            if (confirmResult == DialogResult.Yes)
+            {
+                settingsController.ResetToDefault();
+                pomodoroController.SyncSettings();
+
+                txt_pomodoro.Text = pomodoroController.PomodoroLength.ToString();
+                txt_shortbreak.Text = pomodoroController.ShortBreakLength.ToString();
+                txt_longbreak.Text = pomodoroController.LongBreakLength.ToString();
+                txt_pomodorocycles.Text = pomodoroController.PomodoroCycles.ToString();
+
+            }
         }
     }
 }
