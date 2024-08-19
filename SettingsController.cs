@@ -9,9 +9,9 @@ namespace PomodoroTimer
 {
     internal class SettingsController
     {
-        private readonly static int DEFAULT_POMDORO_LENGTH = 20000;
-        private readonly static int DEFAULT_SHORT_BREAK = 300;
-        private readonly static int DEFAULT_LONG_BREAK = 1800;
+        private readonly static int DEFAULT_POMDORO_LENGTH = 25;
+        private readonly static int DEFAULT_SHORT_BREAK = 5;
+        private readonly static int DEFAULT_LONG_BREAK = 30;
         private readonly static int DEFAULT_POMODORO_CYCLES = 4;
 
         private readonly static string SETTINGS_FILE_PATH = Path.Combine(Application.StartupPath, "settings.txt");
@@ -75,10 +75,10 @@ namespace PomodoroTimer
 
         public void ResetToDefault()
         {
-            this._pomodoroLength = 1500;
-            this._shortBreakLength = 300;
-            this._longBreakLength = 1800;
-            this._pomodoroCycles = 4;
+            this._pomodoroLength = DEFAULT_POMDORO_LENGTH;
+            this._shortBreakLength = DEFAULT_SHORT_BREAK;
+            this._longBreakLength = DEFAULT_LONG_BREAK;
+            this._pomodoroCycles = DEFAULT_POMODORO_CYCLES;
 
             File.WriteAllText(SETTINGS_FILE_PATH, $"PomodoroLength={DEFAULT_POMDORO_LENGTH}\nShortBreakLength={DEFAULT_SHORT_BREAK}\nLongBreakLength={DEFAULT_LONG_BREAK}\nPomodoroCycles={DEFAULT_POMODORO_CYCLES}");
         }

@@ -33,6 +33,7 @@
             timer_focus = new System.Windows.Forms.Timer(components);
             timer_break = new System.Windows.Forms.Timer(components);
             panel_settings = new Panel();
+            btn_cancel_settings = new Button();
             txt_pomodorocycles = new TextBox();
             label_pomodorocycles = new Label();
             txt_longbreak = new TextBox();
@@ -63,6 +64,7 @@
             // 
             // panel_settings
             // 
+            panel_settings.Controls.Add(btn_cancel_settings);
             panel_settings.Controls.Add(txt_pomodorocycles);
             panel_settings.Controls.Add(label_pomodorocycles);
             panel_settings.Controls.Add(txt_longbreak);
@@ -78,6 +80,19 @@
             panel_settings.Size = new Size(776, 426);
             panel_settings.TabIndex = 6;
             panel_settings.Visible = false;
+            // 
+            // btn_cancel_settings
+            // 
+            btn_cancel_settings.BackColor = Color.BurlyWood;
+            btn_cancel_settings.Font = new Font("Corbel", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_cancel_settings.ForeColor = Color.SaddleBrown;
+            btn_cancel_settings.Location = new Point(705, 44);
+            btn_cancel_settings.Name = "btn_cancel_settings";
+            btn_cancel_settings.Size = new Size(43, 41);
+            btn_cancel_settings.TabIndex = 9;
+            btn_cancel_settings.Text = "X";
+            btn_cancel_settings.UseVisualStyleBackColor = false;
+            btn_cancel_settings.Click += btn_cancel_settings_Click;
             // 
             // txt_pomodorocycles
             // 
@@ -314,5 +329,6 @@
         private TextBox txt_pomodoro;
         private Label label_pomodorocycles;
         private TextBox txt_pomodorocycles;
+        private Button btn_cancel_settings;
     }
 }
