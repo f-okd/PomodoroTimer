@@ -175,7 +175,7 @@ namespace PomodoroTimer
             }
             else
             {
-                MessageBox.Show("Invalid input, please enter numbers only.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Invalid input, please enter integers only.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
