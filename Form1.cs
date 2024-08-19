@@ -26,7 +26,7 @@ namespace PomodoroTimer
 
 
         private DialogResult _result;
-        private readonly SoundPlayer _alarm = new("alarm.wav");
+        private readonly SoundPlayer _alarm = new(Path.Combine(Application.StartupPath, "datafiles/alarm.wav"));
 
 
         private void Btn_start_Click(object sender, EventArgs e)
