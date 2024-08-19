@@ -1,7 +1,7 @@
 # PomodoroTimer
-This is a simple C# Windows Forms Application that serves as a [Pomodoro Timer](https://todoist.com/productivity-methods/pomodoro-technique). The Pomodoro Technique is a time management method that uses a timer to break work into intervals, traditionally 25 minutes in length, separated by short breaks. 
+The [Pomodoro](https://todoist.com/productivity-methods/pomodoro-technique) Technique is a time management method that uses a timer to break work into intervals, traditionally 25 minutes in length, separated by short breaks. 
 
-Installer only supports 64 bit systems. Feel free to fork and ammend the "Pomodoro Timer" setup project to also include x86 and or ARM64 versions of the .NET Desktop runtimes as pre-requisites to be installed. I felt the app should be as lightweight as possible.
+Setup targets x64 runtimes, however its published as a self-contained application so you shouldn't run into any incompatibility issues; if you do however, feel free to fork and re-publish to support x86 and or ARM64 versions of the .NET Desktop runtimes.
 
 ## How to run
 1. Download the latest release from the Releases page.
