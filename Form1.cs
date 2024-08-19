@@ -40,8 +40,8 @@ namespace PomodoroTimer
 
         private void DisplayTime(int seconds)
         {
-            TimeSpan time_left = TimeSpan.FromSeconds(pomodoroController.TimeLeft);
-            label_timer.Text = time_left.ToString("mm\\:ss");
+            TimeSpan time_left = TimeSpan.FromSeconds(seconds);
+            label_timer.Text = seconds < 3600 ? time_left.ToString("mm\\:ss") : label_timer.Text = time_left.ToString("hh\\:mm\\:ss");
         }
 
         private void SwitchStates()
@@ -159,6 +159,12 @@ namespace PomodoroTimer
             panel_settings.Visible = true;
         }
 
+        // used to validate the n
+        private static bool ValidLengthOfTime(int length)
+        {
+            return length > 0 && length <= 60;
+        }
+
         private void Btn_applysettings_Click(object sender, EventArgs e)
         {
             bool isPomodoroParsed = int.TryParse(txt_pomodoro.Text, out int pomodoroLength);
@@ -166,16 +172,23 @@ namespace PomodoroTimer
             bool isPomodoroCyclesParsed = int.TryParse(txt_longbreak.Text, out int longBreakLength);
             bool isLongBreakParsed = int.TryParse(txt_pomodorocycles.Text, out int pomodoroCycles);
 
-            if (isPomodoroParsed && isBreakParsed && isLongBreakParsed && isPomodoroCyclesParsed)
+            bool validIntegers = isPomodoroParsed && isBreakParsed && isLongBreakParsed && isPomodoroCyclesParsed;
+            bool validSizes = ValidLengthOfTime(longBreakLength) && ValidLengthOfTime(shortBreakLength) && ValidLengthOfTime(longBreakLength);
+
+            if (!validIntegers || !validSizes)
+            {
+                MessageBox.Show("Invalid input, please enter integers from 1 to 60 only.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if(pomodoroCycles < 1 || pomodoroCycles > 5)
+            {
+                MessageBox.Show("Please choose a number between 1 and 5 for the number of pomodoro cycles", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
             {
                 settingsController.UpdateSettings(pomodoroLength, shortBreakLength, longBreakLength, pomodoroCycles);
                 pomodoroController.SyncSettings();
 
                 panel_settings.Visible = false;
-            }
-            else
-            {
-                MessageBox.Show("Invalid input, please enter integers only.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
