@@ -6,11 +6,11 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <ApplicationIcon>Tomato_icon-icons.com_68675.ico</ApplicationIcon>
+    <ApplicationIcon>tomato_icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="Tomato_icon-icons.com_68675.ico" />
+    <Content Include="tomato_icon.ico" />
   </ItemGroup>
 
   <ItemGroup>
