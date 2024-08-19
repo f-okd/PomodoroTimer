@@ -178,5 +178,15 @@ namespace PomodoroTimer
                 MessageBox.Show("Invalid input, please enter numbers only.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btn_cancel_settings_Click(object sender, EventArgs e)
+        {
+            txt_pomodoro.Text = pomodoroController.PomodoroLength.ToString();
+            txt_shortbreak.Text = pomodoroController.ShortBreakLength.ToString();
+            txt_longbreak.Text = pomodoroController.LongBreakLength.ToString();
+            txt_pomodorocycles.Text = pomodoroController.PomodoroCycles.ToString();
+
+            panel_settings.Visible = false;
+        }
     }
 }
